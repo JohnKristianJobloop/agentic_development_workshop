@@ -3,6 +3,9 @@ import { writeGameSession } from '../../infrastructure/firebase/database'
 import { useGameStore } from '../../state/gameStore'
 import { useAuthStore } from '../../state/authStore'
 import { GameRules, GameSession } from '../../types/game.types'
+import { buildDeck } from '../deck/useDeck'
+import { dealGame } from '../game-setup/dealGame'
+import { DEFAULT_SEED } from '../../types/deck.types'
 
 export const useCreateGameSession = () => {
   const setActiveSession = useGameStore((s) => s.setActiveSession)
@@ -11,11 +14,14 @@ export const useCreateGameSession = () => {
   const createSession = async (rules: GameRules) => {
     if (user.kind !== 'authenticated') return
 
+    const seed = DEFAULT_SEED()
+    const cards = buildDeck(seed)
+
     const session: GameSession = {
       id: uuid(),
       userId: user.uid,
-      board: { tableau: [[], [], [], [], [], [], []], foundations: [[], [], [], []], stock: [], waste: [] },
-      deck: { cards: [], seed: 'default' },
+      board: dealGame(cards),
+      deck: { cards, seed },
       rules,
       createdAt: Date.now(),
       updatedAt: Date.now(),

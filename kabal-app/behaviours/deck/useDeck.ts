@@ -25,7 +25,7 @@ const shuffle = <T>(arr: T[], rand: () => number): T[] => {
   return a
 }
 
-const buildDeck = (seed: string): FaceDownCard[] => {
+export const buildDeck = (seed: string): FaceDownCard[] => {
   const cards: FaceDownCard[] = SUITS.flatMap((suit) =>
     VALUES.map((value) => ({ kind: 'face-down' as const, id: `${value}-${suit}` }))
   )

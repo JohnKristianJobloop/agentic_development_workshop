@@ -51,6 +51,18 @@ describe('Create Game Session', () => {
         expect(useGameStore.getState().activeSession).not.toBeNull()
       })
 
+      it('Then the new session is dealt a ready-to-play board', async () => {
+        jest.spyOn(database, 'writeGameSession').mockResolvedValue()
+        const { result } = renderHook(() => useCreateGameSession())
+        await act(() => result.current.createSession(defaultRules))
+        const board = useGameStore.getState().activeSession!.board
+        const tableauTotal = board.tableau.reduce((sum, pile) => sum + pile.length, 0)
+        expect(board.tableau).toHaveLength(7)
+        expect(tableauTotal).toBe(28)
+        expect(board.stock).toHaveLength(24)
+        expect(board.waste).toHaveLength(0)
+      })
+
       it('Then the session has a unique id', async () => {
         jest.spyOn(database, 'writeGameSession').mockResolvedValue()
         const { result } = renderHook(() => useCreateGameSession())

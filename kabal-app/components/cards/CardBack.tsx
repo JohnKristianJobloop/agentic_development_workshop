@@ -1,8 +1,15 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, Pressable, StyleSheet } from 'react-native'
 
-export const CardBack = () => (
-  <View style={styles.card} />
+type Props = {
+  onPress?: () => void
+  testID?: string
+}
+
+export const CardBack = ({ onPress, testID }: Props) => (
+  <Pressable testID={testID} onPress={onPress} disabled={!onPress}>
+    <View style={styles.card} />
+  </Pressable>
 )
 
 const styles = StyleSheet.create({

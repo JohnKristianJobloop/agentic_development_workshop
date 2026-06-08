@@ -3,7 +3,7 @@
     "name": "Kabal",
     "slug": "kabal-app",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "scheme": "kabal",
     "userInterfaceStyle": "automatic",
     "ios": {

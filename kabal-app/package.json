@@ -17,6 +17,7 @@
     "expo-crypto": "~56.0.3",
     "expo-linking": "~56.0.3",
     "expo-router": "~56.2.8",
+    "expo-screen-orientation": "~56.0.5",
     "expo-status-bar": "~56.0.4",
     "firebase": "^12.14.0",
     "react": "19.2.3",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
+    "@react-native/jest-preset": "^0.85.3",
     "@testing-library/react-native": "^13.3.3",
     "@types/react": "19.2.3",
     "@types/uuid": "^10.0.0",

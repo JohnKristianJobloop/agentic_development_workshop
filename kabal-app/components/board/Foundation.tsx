@@ -1,19 +1,23 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, Pressable, StyleSheet } from 'react-native'
 import { Card as CardComponent } from '../cards/Card'
 import { Card, FaceUpCard } from '../../types/card.types'
 
 type Props = {
   cards: Card[]
+  onPress?: () => void
+  testID?: string
 }
 
-export const Foundation = ({ cards }: Props) => {
+export const Foundation = ({ cards, onPress, testID }: Props) => {
   const top = cards.at(-1)
 
   return (
-    <View style={styles.foundation}>
-      {top?.kind === 'face-up' && <CardComponent card={top as FaceUpCard} />}
-    </View>
+    <Pressable testID={testID} onPress={onPress} disabled={!onPress}>
+      <View style={styles.foundation}>
+        {top?.kind === 'face-up' && <CardComponent card={top as FaceUpCard} />}
+      </View>
+    </Pressable>
   )
 }
 
