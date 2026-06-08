@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "Kabal",
+    "slug": "kabal-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "kabal",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.kabalapp"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#1a6b3c"
+      },
+      "package": "com.kabalapp"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
